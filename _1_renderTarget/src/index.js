@@ -40,15 +40,9 @@ const camera = new OrthographicCamera(-w / 2, w / 2, h / 2, -h / 2, 0.1, 1000);
 
 camera.position.set(0, 0, 150);
 
-// render  invisible texture  (actually a render target that we pass to render to render into, & the object has a texture property to receive sutff) thing
+// render  invisible texture  (actually a render target that we pass to render to render into, & the object has a texture property to receive stuff)
 const renderTarget = new WebGLRenderTarget(w, h, { format: THREE.RGBAFormat });
 console.log(w, h);
-/* navigate inside scene */
-// const controls = new OrbitControls(camera, {
-//   element: renderer.domElement,
-//   distance: 20,
-//   phi: Math.PI * 10.5
-// });
 
 /* Lights */
 const frontLight = new PointLight(0xffffff, 1);
@@ -86,7 +80,7 @@ function addObj(mesh) {
   var yDistance = h;
   var zDistance = h;
 
-  var xOffset = -w / 2; //initial offset so does not start in middle
+  var xOffset = -w / 2;
   var yOffset = -h / 2;
   var zOffset = -h / 2;
 
@@ -110,8 +104,6 @@ function addObj(mesh) {
       }
     }
   }
-  // mesh.geometry.computeBoundingBox();
-  // console.log(mesh.geometry.boundingBox);
 
   var cubeGeometry = new BoxGeometry(1, 1, 1);
   var cubeMaterial = new THREE.MeshBasicMaterial({
@@ -141,9 +133,6 @@ function onResize() {
 
 // Render loop
 function render() {
-  // track mouse movement
-  //controls.update();
-
   // get sound freqs
   const subAvg = average(analyser, freq, bands.sub.from, bands.sub.to);
   const lowAvg = average(analyser, freq, bands.low.from, bands.low.to);
